@@ -92,6 +92,13 @@ public class MainActivity extends Activity {
             }
         });
 
+        findViewById(R.id.btn_8).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                schemeCall();
+            }
+        });
+
         registerReceivers();
 
         getCpuInfo();
@@ -101,6 +108,12 @@ public class MainActivity extends Activity {
         getInstallTime();
 
         TestAAR.printMsg("Test_AAR");
+    }
+
+    private void schemeCall() {
+        Intent intent = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("sinanews://?::url=https://weibo.com/6250824982/GFfHBkKJ2::params={}"));
+        startActivity(intent);
     }
 
     public boolean getInstallTime() {
