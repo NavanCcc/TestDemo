@@ -3,7 +3,6 @@ package com.example.chenren1.hello;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.DownloadManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
@@ -13,6 +12,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.chenren1.hello.activity.Activity1;
 import com.example.chenren1.hello.receiver.AlarmReceiver;
@@ -95,7 +95,14 @@ public class MainActivity extends Activity {
         findViewById(R.id.btn_8).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                schemeCall();
+                schemeCall(true);
+            }
+        });
+
+        findViewById(R.id.btn_9).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                schemeCall(false);
             }
         });
 
@@ -110,9 +117,15 @@ public class MainActivity extends Activity {
         TestAAR.printMsg("Test_AAR");
     }
 
-    private void schemeCall() {
-        Intent intent = new Intent(Intent.ACTION_VIEW,
-                Uri.parse("sinanews://?::url=https://weibo.com/6250824982/GFfHBkKJ2::params={}"));
+    private void schemeCall(boolean isWeibo) {
+        Intent intent;
+        if (isWeibo) {
+            intent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("sinanews://?::url=https://weibo.com/6250824982/GFfHBkKJ2::params={}"));
+        } else {
+            intent = new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("sinanews://?::url=https://www.baidu.com/::params={}"));
+        }
         startActivity(intent);
     }
 
@@ -280,6 +293,16 @@ public class MainActivity extends Activity {
     protected void onDestroy() {
         super.onDestroy();
         unRegisterReceivers();
+    }
+
+    public String getString(String name) {
+        String str = MainActivity.this.getResources().getString(getStringId(name));
+        str = str == null ? "" : str;
+        return str;
+    }
+
+    public int getStringId(String name) {
+        return MainActivity.this.getResources().getIdentifier(name, "string", MainActivity.this.getPackageName());
     }
 }
 
