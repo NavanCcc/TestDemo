@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.chenren1.hello.activity.Activity1;
+import com.example.chenren1.hello.activity.Activity2;
 import com.example.chenren1.hello.receiver.AlarmReceiver;
 import com.example.chenren1.hello.receiver.ConnectivityReceiver;
 import com.example.chenren1.hello.receiver.InstallApkReceiver;
@@ -103,6 +104,13 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 schemeCall(false);
+            }
+        });
+
+        findViewById(R.id.btn_10).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent().setClass(MainActivity.this, Activity2.class));
             }
         });
 
