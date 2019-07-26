@@ -3,6 +3,7 @@ package com.example.chenren1.hello;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.DownloadManager;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
@@ -12,7 +13,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.chenren1.hello.activity.Activity1;
 import com.example.chenren1.hello.activity.Activity2;
@@ -114,6 +114,35 @@ public class MainActivity extends Activity {
             }
         });
 
+        findViewById(R.id.btn_11).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startDirectSchemeCall();
+            }
+        });
+
+        findViewById(R.id.btn_12).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startSinaDynmActivity();
+            }
+        });
+
+
+        findViewById(R.id.btn_13).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startSinaDynmBActivity();
+            }
+        });
+
+        findViewById(R.id.btn_14).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startSinaActivity();
+            }
+        });
+
         registerReceivers();
 
         getCpuInfo();
@@ -123,6 +152,24 @@ public class MainActivity extends Activity {
         getInstallTime();
 
         TestAAR.printMsg("Test_AAR");
+    }
+
+    private void startSinaDynmActivity() {
+        Intent intent = new Intent();
+        intent.setComponent(new ComponentName("com.sina.news","com.sina.news.module.push.guard.activity.SinaDynmActivity"));
+        startActivity(intent);
+    }
+
+    private void startSinaDynmBActivity() {
+        Intent intent = new Intent();
+        intent.setComponent(new ComponentName("com.sina.news","com.sina.news.module.push.guard.activity.SinaDynmBActivity"));
+        startActivity(intent);
+    }
+
+    private void startSinaActivity() {
+        Intent intent = new Intent();
+        intent.setComponent(new ComponentName("com.sina.news","com.sina.news.ui.MainActivity"));
+        startActivity(intent);
     }
 
     private void schemeCall(boolean isWeibo) {
@@ -219,6 +266,13 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    private void startDirectSchemeCall() {
+        String uriString = "sinanewsdirect://params={\"id\":\"hhtfwqr4367623-comos-video-cms\",\"type\":\"\",\"isSilence\":\"0\",\"skipAd\":\"0\"}";
+        Uri uri = Uri.parse(uriString);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
+
     private void testCollection() {
 
         Random random = new Random();
@@ -244,22 +298,17 @@ public class MainActivity extends Activity {
 
     private void startGuardPushService() {
         Log.e(CpuUtils.TAG, "cccc startGuardPushService");
-        Intent it = new Intent();
-        it.setAction("sina.news.push.start");
-        it.setPackage("com.sina.news");
-        it.setClassName("com.sina.news", "com.sina.news.push.GuardPushService");
-        startService(it);
+        Intent intent = new Intent();
+        intent.setComponent(new ComponentName("com.sina.news", "com.sina.news.push.GuardPushService"));
+        startService(intent);
     }
 
     @TargetApi(Build.VERSION_CODES.O)
     private void startGuardPushForegroundServices() {
         Log.e(CpuUtils.TAG, "cccc startGuardPushForegroundServices");
-        Intent it = new Intent();
-//        it.setAction("com.sina.news.push.GuardPushService");
-        it.setAction("sina.news.push.start");
-        it.setPackage("com.sina.news");
-        it.setClassName("com.sina.news", "com.sina.news.push.GuardPushService");
-        startForegroundService(it);
+        Intent intent = new Intent();
+        intent.setComponent(new ComponentName("com.sina.news", "com.sina.news.push.GuardPushService"));
+        startForegroundService(intent);
     }
 
     private void startTestService1() {
