@@ -17,6 +17,7 @@ import com.example.chenren1.hello.R;
 import com.example.chenren1.hello.receiver.ConnectivityReceiver;
 import com.example.chenren1.hello.receiver.InstallApkReceiver;
 import com.example.chenren1.hello.receiver.ScreenReceiver;
+import com.example.chenren1.hello.utils.LogUtils;
 
 import static android.app.DownloadManager.ACTION_NOTIFICATION_CLICKED;
 
@@ -52,9 +53,9 @@ public class Activity1 extends Activity {
                     .setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE)
                     .setMimeType("application/vnd.android.package-archive");
             long downloadId = downloadManager.enqueue(request);
-            Log.e("cccc", "cccc downloadId " + downloadId);
+            LogUtils.d("downloadId " + downloadId);
         } catch (Exception e) {
-            Log.e("cccc", "cccc Exception");
+            LogUtils.d("Exception");
             e.printStackTrace();
         }
     }
@@ -79,7 +80,7 @@ public class Activity1 extends Activity {
     public class DownLoadCompleteReceiver extends BroadcastReceiver {
         @Override
         public void onReceive(Context context, Intent intent) {
-            Log.e("cccc", "cccc DownLoadCompleteReceiver " + intent.getAction());
+            LogUtils.d("DownLoadCompleteReceiver " + intent.getAction());
         }
     }
 }

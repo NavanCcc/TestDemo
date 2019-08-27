@@ -7,6 +7,8 @@ import android.os.IBinder;
 import android.os.Message;
 import android.util.Log;
 
+import com.example.chenren1.hello.utils.LogUtils;
+
 /**
  * Created by chenren1 on 2018/5/10.
  */
@@ -16,7 +18,7 @@ public class TestService2 extends Service {
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            Log.e("cccc", "cccc TestService2 " + (++num));
+            LogUtils.d("TestService2 " + (++num));
             if (num == 20) {
                 return;
             }
@@ -32,7 +34,7 @@ public class TestService2 extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.e("cccc", "cccc TestService2  ----------------  2");
+        LogUtils.d("TestService2  ----------------  2");
         mHandler.sendEmptyMessage(1);
         return super.onStartCommand(intent, flags, startId);
     }

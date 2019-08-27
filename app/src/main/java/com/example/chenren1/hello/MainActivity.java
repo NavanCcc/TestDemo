@@ -22,6 +22,7 @@ import com.example.chenren1.hello.receiver.InstallApkReceiver;
 import com.example.chenren1.hello.receiver.ScreenReceiver;
 import com.example.chenren1.hello.service.TestService1;
 import com.example.chenren1.hello.utils.CpuUtils;
+import com.example.chenren1.hello.utils.LogUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -56,9 +57,7 @@ public class MainActivity extends Activity {
         findViewById(R.id.btn_2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, TestService1.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                MainActivity.this.startService(intent);
+                startActivity(new Intent().setClass(MainActivity.this, Activity2.class));
             }
         });
 
@@ -156,19 +155,19 @@ public class MainActivity extends Activity {
 
     private void startSinaDynmActivity() {
         Intent intent = new Intent();
-        intent.setComponent(new ComponentName("com.sina.news","com.sina.news.module.push.guard.activity.SinaDynmActivity"));
+        intent.setComponent(new ComponentName("com.sina.news", "com.sina.news.module.push.guard.activity.SinaDynmActivity"));
         startActivity(intent);
     }
 
     private void startSinaDynmBActivity() {
         Intent intent = new Intent();
-        intent.setComponent(new ComponentName("com.sina.news","com.sina.news.module.push.guard.activity.SinaDynmBActivity"));
+        intent.setComponent(new ComponentName("com.sina.news", "com.sina.news.module.push.guard.activity.SinaDynmBActivity"));
         startActivity(intent);
     }
 
     private void startSinaActivity() {
         Intent intent = new Intent();
-        intent.setComponent(new ComponentName("com.sina.news","com.sina.news.ui.MainActivity"));
+        intent.setComponent(new ComponentName("com.sina.news", "com.sina.news.ui.MainActivity"));
         startActivity(intent);
     }
 
@@ -190,8 +189,8 @@ public class MainActivity extends Activity {
         try {
             PackageInfo packageInfo = this.getPackageManager().getPackageInfo(this.getPackageName(), 0);
             if (packageInfo != null) {
-                Log.e(CpuUtils.TAG, "time firstInstallTime：" + packageInfo.firstInstallTime);
-                Log.e(CpuUtils.TAG, "time  lastUpdateTime：" + packageInfo.lastUpdateTime);
+                LogUtils.d("time firstInstallTime：" + packageInfo.firstInstallTime);
+                LogUtils.d("time  lastUpdateTime：" + packageInfo.lastUpdateTime);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -210,7 +209,7 @@ public class MainActivity extends Activity {
             Date lastDate = format.parse(lastDateStr);
             Date currentDate = new Date();
 
-            Log.e(CpuUtils.TAG, "两个日期的差距：" + differentDays(lastDate, currentDate));
+            LogUtils.d("两个日期的差距：" + differentDays(lastDate, currentDate));
 
         } catch (ParseException e) {
             e.printStackTrace();
@@ -280,24 +279,22 @@ public class MainActivity extends Activity {
         for (int i = 0; i < 20; i++) {
             listData.add(random.nextInt(1000));
         }
-        Log.e(CpuUtils.TAG, "cccc Collections.sort " + listData.toString());
+        LogUtils.d("Collections.sort " + listData.toString());
         Collections.sort(listData);
-        Log.e(CpuUtils.TAG, "cccc listData " + listData.toString());
+        LogUtils.d("listData " + listData.toString());
 //        ArrayList.sort(listData);
-        Log.e(CpuUtils.TAG, "cccc listData " + listData.toString());
+        LogUtils.d("listData " + listData.toString());
 
     }
 
 
     private void getCpuInfo() {
-        Log.e(CpuUtils.TAG, "cccc checkIfCPUx86 " + CpuUtils.checkIfCPUx86());
-
-        Log.e(CpuUtils.TAG, "cccc getArchType " + CpuUtils.getArchType(this));
-
+        LogUtils.d("checkIfCPUx86 " + CpuUtils.checkIfCPUx86());
+        LogUtils.d("getArchType " + CpuUtils.getArchType(this));
     }
 
     private void startGuardPushService() {
-        Log.e(CpuUtils.TAG, "cccc startGuardPushService");
+        LogUtils.d("startGuardPushService");
         Intent intent = new Intent();
         intent.setComponent(new ComponentName("com.sina.news", "com.sina.news.push.GuardPushService"));
         startService(intent);
@@ -305,7 +302,7 @@ public class MainActivity extends Activity {
 
     @TargetApi(Build.VERSION_CODES.O)
     private void startGuardPushForegroundServices() {
-        Log.e(CpuUtils.TAG, "cccc startGuardPushForegroundServices");
+        LogUtils.d("startGuardPushForegroundServices");
         Intent intent = new Intent();
         intent.setComponent(new ComponentName("com.sina.news", "com.sina.news.push.GuardPushService"));
         startForegroundService(intent);
@@ -318,7 +315,7 @@ public class MainActivity extends Activity {
     }
 
     private void registerReceivers() {
-        Log.e(CpuUtils.TAG, "cccc registerReceivers ");
+        LogUtils.d("registerReceivers");
         IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
         connectivityReceiver = new ConnectivityReceiver();
         this.registerReceiver(connectivityReceiver, filter);
@@ -339,7 +336,7 @@ public class MainActivity extends Activity {
     }
 
     private void unRegisterReceivers() {
-        Log.e(CpuUtils.TAG, "cccc unRegisterReceivers ");
+        LogUtils.d("unRegisterReceivers");
         this.unregisterReceiver(connectivityReceiver);
         this.unregisterReceiver(installApkReceiver);
         this.unregisterReceiver(screenReceiver);

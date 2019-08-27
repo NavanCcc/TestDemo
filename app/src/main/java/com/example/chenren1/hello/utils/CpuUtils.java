@@ -16,7 +16,6 @@ import java.util.Locale;
  */
 
 public class CpuUtils {
-    public static final String TAG = "cccc";
 
     public static final String CPU_ARCHITECTURE_TYPE_32 = "32";
     public static final String CPU_ARCHITECTURE_TYPE_64 = "64";
@@ -67,7 +66,7 @@ public class CpuUtils {
     public static String getArchType(Context context) {
         if (getSystemProperty(CPU_ARCHITECTURE_KEY_64, "").length() > 0) {
             if (LOGENABLE) {
-                Log.d(TAG, "CPU arch is 64bit");
+                LogUtils.d("CPU arch is 64bit");
             }
             return CPU_ARCHITECTURE_TYPE_64;
         } else if (isCPUInfo64()) {
@@ -76,7 +75,7 @@ public class CpuUtils {
             return CPU_ARCHITECTURE_TYPE_64;
         } else {
             if (LOGENABLE) {
-                Log.d(TAG, "return cpu DEFAULT 32bit!");
+                LogUtils.d("return cpu DEFAULT 32bit!");
             }
             return CPU_ARCHITECTURE_TYPE_32;
         }
@@ -114,17 +113,17 @@ public class CpuUtils {
                 String line = bufferedReader.readLine();
                 if (line != null && line.length() > 0 && line.toLowerCase(Locale.US).contains("arch64")) {
                     if (LOGENABLE) {
-                        Log.d(TAG, PROC_CPU_INFO_PATH + " contains is arch64");
+                        LogUtils.d( PROC_CPU_INFO_PATH + " contains is arch64");
                     }
                     return true;
                 } else {
                     if (LOGENABLE) {
-                        Log.d(TAG, PROC_CPU_INFO_PATH + " is not arch64");
+                        LogUtils.d(PROC_CPU_INFO_PATH + " is not arch64");
                     }
                 }
             } catch (Throwable t) {
                 if (LOGENABLE) {
-                    Log.d(TAG, "read " + PROC_CPU_INFO_PATH + " error = " + t.toString());
+                    LogUtils.d("read " + PROC_CPU_INFO_PATH + " error = " + t.toString());
                 }
             } finally {
                 try {
@@ -156,7 +155,7 @@ public class CpuUtils {
             byte[] header = readELFHeadrIndentArray(libcFile);
             if (header != null && header[EI_CLASS] == ELFCLASS64) {
                 if (LOGENABLE) {
-                    Log.d(TAG, SYSTEM_LIB_C_PATH + " is 64bit");
+                    LogUtils.d(SYSTEM_LIB_C_PATH + " is 64bit");
                 }
                 return true;
             }
@@ -167,7 +166,7 @@ public class CpuUtils {
             byte[] header = readELFHeadrIndentArray(libcFile64);
             if (header != null && header[EI_CLASS] == ELFCLASS64) {
                 if (LOGENABLE) {
-                    Log.d(TAG, SYSTEM_LIB_C_PATH_64 + " is 64bit");
+                    LogUtils.d(SYSTEM_LIB_C_PATH_64 + " is 64bit");
                 }
                 return true;
             }

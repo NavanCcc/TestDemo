@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.example.chenren1.hello.utils.LogUtils;
+
 /**
  * Created by wenfei1 on 2017/11/21.
  */
@@ -15,7 +17,7 @@ public class ScreenReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.e("cccc", "cccc ScreenReceiver " + intent.getAction());
+        LogUtils.d("ScreenReceiver " + intent.getAction());
         if (intent == null) {
             return;
         }

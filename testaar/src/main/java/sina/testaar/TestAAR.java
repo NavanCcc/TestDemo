@@ -8,7 +8,7 @@ import android.util.Log;
 
 public class TestAAR {
 
-    private static String TAG = "cccc-estAAR";
+    private static String TAG = "TestAAR-TestAAR";
 
     public static void printMsg(String msg) {
         Log.e(TAG, msg);

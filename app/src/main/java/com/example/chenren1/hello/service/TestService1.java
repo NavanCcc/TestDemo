@@ -9,6 +9,8 @@ import android.os.IBinder;
 import android.os.Message;
 import android.util.Log;
 
+import com.example.chenren1.hello.utils.LogUtils;
+
 /**
  * Created by chenren1 on 2018/5/10.
  */
@@ -18,7 +20,7 @@ public class TestService1 extends Service {
     private Handler mHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-            Log.e("cccc", "cccc TestService1 " + (++num));
+            LogUtils.d("TestService1 " + (++num));
             if (num == 150) {
                 return;
             }
@@ -32,7 +34,7 @@ public class TestService1 extends Service {
     };
 
     private void startServices() {
-        Log.e("cccc", "cccc startServices2  ----------------  1 ");
+        LogUtils.d("startServices2  ----------------  1 ");
         Intent intent = new Intent(this, TestService2.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         this.startService(intent);
@@ -40,7 +42,7 @@ public class TestService1 extends Service {
 
     private void startForegroundService() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            Log.e("cccc", "cccc startForegroundService2  ----------------  1 ");
+            LogUtils.d("startForegroundService2  ----------------  1 ");
             Intent intent = new Intent(this, TestService2.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startForegroundService(intent);

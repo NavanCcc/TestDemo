@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
+import com.example.chenren1.hello.utils.LogUtils;
+
 /**
  * 外部相关app链接下载安装器
  * Created by yangjun6 on 2017/6/8.
@@ -17,7 +19,7 @@ public class InstallApkReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.e("cccc","cccc InstallApkReceiver "+intent.getAction());
+        LogUtils.d("InstallApkReceiver "+intent.getAction());
         if (intent.getAction() == null) {
             return;
         }
