@@ -16,6 +16,7 @@ import android.view.View;
 
 import com.example.chenren1.hello.activity.Activity1;
 import com.example.chenren1.hello.activity.Activity2;
+import com.example.chenren1.hello.activity.ShortVideoActivity;
 import com.example.chenren1.hello.activity.WebActivity;
 import com.example.chenren1.hello.receiver.AlarmReceiver;
 import com.example.chenren1.hello.receiver.ConnectivityReceiver;
@@ -147,6 +148,13 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent().setClass(MainActivity.this, WebActivity.class));
+            }
+        });
+
+        findViewById(R.id.btn_16).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent().setClass(MainActivity.this, ShortVideoActivity.class));
             }
         });
 
