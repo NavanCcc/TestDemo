@@ -45,6 +45,15 @@ public class ShortVideoActivity extends Activity {
                 LogUtils.d("onPageSelected  pos:" + position + "  isBottom:" + isBottom);
 
             }
+            @Override
+            public void onPageScrollNext(int position) {
+                LogUtils.d("onPageScrollNext  pos:" + position );
+            }
+
+            @Override
+            public void onPageScrollPrevious(int position) {
+                LogUtils.d("onPageScrollPrevious  pos:" + position );
+            }
         });
         mRecyclerView.setLayoutManager(mLayoutManager);
     }
