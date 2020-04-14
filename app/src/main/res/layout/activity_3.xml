@@ -28,13 +28,17 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="375dp"
         android:layout_marginTop="10dp"
-        android:background="#22ff0000"
+        android:background="#99000000"
+        android:gravity="center"
         android:orientation="vertical">
 
-
+        <com.example.chenren1.hello.view.MultiplexVideoFullScreenView
+            android:id="@+id/video_multiplex_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 </LinearLayout>
