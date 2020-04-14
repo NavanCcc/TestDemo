@@ -21,6 +21,7 @@ import com.example.chenren1.hello.R;
 import static android.app.DownloadManager.ACTION_NOTIFICATION_CLICKED;
 
 /**
+ * Dialog
  * Created by chenren1 on 2018/5/21.
  */
 
@@ -75,7 +76,7 @@ public class Activity2 extends Activity {
 
 
     public void finishMe() {
-        // activity.getWindowManager().removeView(view);  要写在finish前，写在onDestroy中，会窗体泄漏
+        // activity.getWindowManager().removeView(videoDanMuView);  要写在finish前，写在onDestroy中，会窗体泄漏
         finish();
         mDialog.dismiss();
         mDialog = null;

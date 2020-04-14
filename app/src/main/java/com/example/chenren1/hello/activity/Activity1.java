@@ -22,6 +22,7 @@ import com.example.chenren1.hello.utils.LogUtils;
 import static android.app.DownloadManager.ACTION_NOTIFICATION_CLICKED;
 
 /**
+ * DownloadManager 下载app测试
  * Created by chenren1 on 2018/5/21.
  */
 

@@ -11,11 +11,11 @@ import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.example.chenren1.hello.activity.Activity1;
 import com.example.chenren1.hello.activity.Activity2;
+import com.example.chenren1.hello.activity.Activity3;
 import com.example.chenren1.hello.activity.ShortVideoActivity;
 import com.example.chenren1.hello.activity.WebActivity;
 import com.example.chenren1.hello.receiver.AlarmReceiver;
@@ -155,6 +155,13 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent().setClass(MainActivity.this, ShortVideoActivity.class));
+            }
+        });
+
+        findViewById(R.id.btn_17).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent().setClass(MainActivity.this, Activity3.class));
             }
         });
 

@@ -126,5 +126,11 @@
             android:layout_height="wrap_content"
             android:text="Start ShortVideo Activity"
             android:textAllCaps="false" />
+        <Button
+            android:id="@+id/btn_17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Danmu RecycleView"
+            android:textAllCaps="false" />
     </LinearLayout>
 </ScrollView>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:layout_marginLeft="14dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="3dp"
+        android:background="@drawable/video_danmu_item_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/item_horizontal_bg"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_margin="1dp"
+            android:background="#9900ff00" />
+
+        <TextView
+            android:id="@+id/item_horizontal_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="2dp"
+            android:ellipsize="end"
+            android:gravity="left|center_vertical"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:text="ItemItemItemItemItemItemItemItemItemItemItemItemItemItem"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+</RelativeLayout>
