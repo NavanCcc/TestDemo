@@ -16,6 +16,7 @@ import android.view.View;
 import com.example.chenren1.hello.activity.Activity1;
 import com.example.chenren1.hello.activity.Activity2;
 import com.example.chenren1.hello.activity.Activity3;
+import com.example.chenren1.hello.activity.Activity4;
 import com.example.chenren1.hello.activity.ShortVideoActivity;
 import com.example.chenren1.hello.activity.WebActivity;
 import com.example.chenren1.hello.receiver.AlarmReceiver;
@@ -165,6 +166,13 @@ public class MainActivity extends Activity {
             }
         });
 
+        findViewById(R.id.btn_18).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent().setClass(MainActivity.this, Activity4.class));
+            }
+        });
+
         registerReceivers();
 
         getCpuInfo();
@@ -198,7 +206,7 @@ public class MainActivity extends Activity {
         Intent intent;
         if (isWeibo) {
             intent = new Intent(Intent.ACTION_VIEW,
-                    Uri.parse("sinanews://?::url=https://weibo.com/6250824982/GFfHBkKJ2::params={}"));
+                    Uri.parse("sinanews://sina.cn/video/singlePlayer.pg?&playUrl=https://m.miguvideo.com/wap/resource/migu/weibo/playurl.jsp?cid=642943057%20&type=video&channelid=10290001005&Expires=1530774936&ssig=HrK%2B8ficJk&KID%20=unistore,video&coverImageUrl=https://vthumb.ykimg.com/054106015B336618ADA4C71AC20F06FDsinanews://sina.cn/video/singlePlayer.pg?&playUrl=https://m.miguvideo.com/wap/resource/migu/weibo/playurl.jsp?cid=642943057%20&type=video&channelid=10290001005&Expires=1530774936&ssig=HrK%2B8ficJk&KID%20=unistore,video&coverImageUrl=https://vthumb.ykimg.com/054106015B336618ADA4C71AC20F06FD"));
         } else {
             intent = new Intent(Intent.ACTION_VIEW,
                     Uri.parse("sinanews://?::url=https://www.baidu.com/::params={}"));
